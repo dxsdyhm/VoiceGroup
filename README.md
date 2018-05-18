@@ -1,4 +1,4 @@
-# VoiceGroup
+# VoiceGroup  [![](https://jitpack.io/v/dxsdyhm/VoiceGroup.svg)](https://jitpack.io/#dxsdyhm/VoiceGroup)
 小豚当家语音消息
 
 ## use
@@ -14,7 +14,7 @@
 ```groovy
     dependencies {
             compile 'com.sothree.slidinguppanel:library:3.4.0'
-	        implementation 'com.github.dxsdyhm:VoiceGroup:1.0.0'
+	        implementation 'com.github.dxsdyhm:VoiceGroup:lastversion'
 	}
 ```
 
