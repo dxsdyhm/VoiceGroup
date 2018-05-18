@@ -109,7 +109,6 @@ public class IndicatorsViewGroup extends ViewGroup {
         mFillBackRect.set(mBackRect.left, (int) (mBackRect.bottom / 2 - progress * mBackRect.height() / 2), mBackRect.right, mBackRect.bottom);
         arrowsView.setShowProgress(progress);
         requestLayout();
-        Log.e("dxsTest","mBackRect:"+mBackRect.toString());
     }
 
     /**

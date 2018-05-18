@@ -89,7 +89,6 @@ public class ArrowsView extends View {
     }
 
     private void drawArrow(Canvas canvas){
-        Log.e("dxsTest","bound:"+bound.toString());
         float offset=(bound.height()-arrowGap-lineW)*progress;
 //        mPaintArrow.setAlpha();
         mPathArrow.rewind();

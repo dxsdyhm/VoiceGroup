@@ -59,7 +59,7 @@ public class VoiceView extends View {
         lineW = dip2px(context, lineW);
         mPaintBack = new Paint();
         mPaintBack.setAntiAlias(true);
-        mPaintBack.setColor(Color.parseColor("#4ec200"));
+        mPaintBack.setColor(Color.parseColor("#ffbf7f"));
 
         mPaintLine = new Paint();
         mPaintLine.setAntiAlias(true);
