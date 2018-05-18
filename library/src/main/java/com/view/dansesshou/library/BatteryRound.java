@@ -24,7 +24,7 @@ public class BatteryRound extends View {
     private int lineW = 1;
     private float lineRatio = 0.5f;
     private int textSize = 10;
-    private int[][] col = new int[][]{{20, 100}, {Color.parseColor("#ff0000"), Color.parseColor("#4ec200")}};
+    private int[][] col = new int[][]{{20, 100}, {Color.parseColor("#ff0000"), Color.parseColor("#89c646")}};
     private int currentValue = 100;
     PorterDuffXfermode modeTx = new PorterDuffXfermode(PorterDuff.Mode.XOR);
 
@@ -51,7 +51,7 @@ public class BatteryRound extends View {
         mTextPaint = new Paint();
         mTextPaint.setTextAlign(Paint.Align.CENTER);
         mTextPaint.setTextSize(dip2px(context, textSize));
-        mTextPaint.setXfermode(modeTx);
+//        mTextPaint.setXfermode(modeTx);
         mTextPaint.setColor(Color.parseColor("#4ec200"));
 
         //关闭硬件加速（神坑）
@@ -147,7 +147,7 @@ public class BatteryRound extends View {
         }
         canvas.save();
         mPaint.setStyle(Paint.Style.FILL);
-        float offset = lineW / 2+0.5f;
+        float offset = lineW / 2;
         batterCenterRecf.set(batteryRecf.left + offset, batteryRecf.top + offset, batteryRecf.right - offset, batteryRecf.bottom - offset);
         canvas.clipRect(batterCenterRecf.left,batterCenterRecf.top,batterCenterRecf.right*currentValue/100,batterCenterRecf.bottom);
         canvas.drawRoundRect(batterCenterRecf,batterCenterRecf.height()/2,batterCenterRecf.height()/2, mTextPaint);
