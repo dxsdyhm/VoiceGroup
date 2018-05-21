@@ -49,6 +49,7 @@ public class BatteryRound extends View {
 //        mPaint.setStrokeCap(Paint.Cap.ROUND);
 
         mTextPaint = new Paint();
+        mTextPaint.setAntiAlias(true);
         mTextPaint.setTextAlign(Paint.Align.CENTER);
         mTextPaint.setTextSize(dip2px(context, textSize));
 //        mTextPaint.setXfermode(modeTx);

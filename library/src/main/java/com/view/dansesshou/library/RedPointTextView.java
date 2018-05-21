@@ -45,6 +45,7 @@ public class RedPointTextView extends View {
         mPaintRed.setColor(Color.parseColor("#ff0000"));
 
         mTextPaint=new Paint();
+        mTextPaint.setAntiAlias(true);
         mTextPaint.setTextAlign(Paint.Align.RIGHT);
         mTextPaint.setTextSize(dip2px(context, 12));
         mTextPaint.setColor(Color.parseColor("#000000"));
