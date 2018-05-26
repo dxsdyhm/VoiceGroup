@@ -138,7 +138,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.v_voice:
                 isPlaying=!isPlaying;
-                voiceView.startPlay(isPlaying);
+//                voiceView.startPlay(isPlaying);
+                voiceView.clickOnceTime();
                 batteryRound.setCurrentValue((int) (Math.random()*100));
                 break;
         }

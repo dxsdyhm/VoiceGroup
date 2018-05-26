@@ -133,6 +133,14 @@ public class VoiceView extends View {
         invalidate();
     }
 
+    /**
+     * 状态相反
+     */
+    public void clickOnceTime(){
+        this.isPlaying=!this.isPlaying;
+        invalidate();
+    }
+
     //本想自动计算初始状态，后面觉得不需要这么通用，则放弃
     private void getInitParems() {
         for (int i = 0; i < parems.length; i++) {
