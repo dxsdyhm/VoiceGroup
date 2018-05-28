@@ -8,6 +8,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -161,7 +162,15 @@ public class BatteryRound extends View {
     }
 
     public void setCurrentValue(String text) {
-        //empty
+        if(TextUtils.isEmpty(text)){
+            return;
+        }
+        try {
+            this.currentValue=Integer.parseInt(text);
+            invalidate();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
     }
 
     private static int dip2px(Context context, int dipValue) {
