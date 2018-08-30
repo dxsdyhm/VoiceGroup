@@ -28,6 +28,7 @@ public class BatteryRound extends View {
     private int[][] col = new int[][]{{20, 100}, {Color.parseColor("#ff0000"), Color.parseColor("#89c646")}};
     private int currentValue = 100;
     PorterDuffXfermode modeTx = new PorterDuffXfermode(PorterDuff.Mode.XOR);
+    private boolean isShowCurrentValue;//是否展示文字
 
     public BatteryRound(Context context) {
         this(context, null);
@@ -95,8 +96,10 @@ public class BatteryRound extends View {
         drawBattery(canvas);
         resetTextPaint();
         drawBatteryCennter(canvas);
-        drawText(canvas);
-        drawSendText(canvas);
+        if (isShowCurrentValue) {
+            drawText(canvas);
+            drawSendText(canvas);
+        }
     }
 
     private void drawText(Canvas canvas) {
@@ -144,9 +147,10 @@ public class BatteryRound extends View {
     }
 
     private void drawBatteryCennter(Canvas canvas) {
-        if(currentValue==100){
-            mTextPaint.setColor(Color.WHITE);
-        }
+        //应产品经理需求 屏蔽百分百展示为白色的需求
+//        if(currentValue==100){
+//            mTextPaint.setColor(Color.WHITE);
+//        }
         canvas.save();
         mPaint.setStyle(Paint.Style.FILL);
         float offset = lineW / 2;
@@ -180,5 +184,14 @@ public class BatteryRound extends View {
 
     private String getFormatText(int value) {
         return "" + value + "%";
+    }
+
+    public boolean isShowCurrentValue() {
+        return isShowCurrentValue;
+    }
+
+    public void setShowCurrentValue(boolean showCurrentValue) {
+        isShowCurrentValue = showCurrentValue;
+        invalidate();
     }
 }
