@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
@@ -29,6 +30,8 @@ public class BatteryRound extends View {
     private int currentValue = 100;
     PorterDuffXfermode modeTx = new PorterDuffXfermode(PorterDuff.Mode.XOR);
     private boolean isShowCurrentValue;//是否展示文字
+    private Paint mChargePaint;
+    private boolean isShowCharge;//是否展示充电图标
 
     public BatteryRound(Context context) {
         this(context, null);
@@ -56,6 +59,11 @@ public class BatteryRound extends View {
         mTextPaint.setTextSize(dip2px(context, textSize));
 //        mTextPaint.setXfermode(modeTx);
         mTextPaint.setColor(Color.parseColor("#4ec200"));
+
+        mChargePaint = new Paint();
+        mChargePaint.setAntiAlias(true);
+        mChargePaint.setColor(Color.parseColor("#FFFFFF"));
+        mChargePaint.setStyle(Paint.Style.FILL);
 
         //关闭硬件加速（神坑）
         setLayerType(View.LAYER_TYPE_SOFTWARE, null);
@@ -99,6 +107,9 @@ public class BatteryRound extends View {
         if (isShowCurrentValue) {
             drawText(canvas);
             drawSendText(canvas);
+        }
+        if (isShowCharge) {
+            drawCharge(canvas);
         }
     }
 
@@ -160,6 +171,26 @@ public class BatteryRound extends View {
         canvas.restore();
     }
 
+    /**
+     * 画电池充电的闪电图标
+     * @param canvas
+     */
+    private void drawCharge(Canvas canvas){
+        canvas.save();
+        canvas.translate(getMeasuredWidth()/2,getMeasuredHeight()/2);
+        //一共为6个点
+        Path path = new Path();
+        path.moveTo(7,(0-batterCenterRecf.height()/2+6));
+        path.lineTo(4,-2);
+        path.lineTo(8,2);
+        path.lineTo(-7, batterCenterRecf.height()/2-6);
+        path.lineTo(-4,2);
+        path.lineTo(-8,-2);
+        path.close();
+        canvas.drawPath(path,mChargePaint);
+        canvas.restore();
+    }
+
     public void setCurrentValue(int value) {
         this.currentValue = value;
         invalidate();
@@ -193,5 +224,13 @@ public class BatteryRound extends View {
     public void setShowCurrentValue(boolean showCurrentValue) {
         isShowCurrentValue = showCurrentValue;
         invalidate();
+    }
+
+    public boolean isShowCharge() {
+        return isShowCharge;
+    }
+
+    public void setShowCharge(boolean showCharge) {
+        isShowCharge = showCharge;
     }
 }
